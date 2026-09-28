@@ -45,7 +45,7 @@ export function Header() {
             <Link
               key={l.label}
               to={l.to}
-              hash={l.hash}
+              {...(l.hash ? { hash: l.hash } : {})}
               className="relative text-sm text-muted-foreground transition-colors hover:text-foreground after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
             >
               {l.label}
@@ -79,7 +79,7 @@ export function Header() {
               <Link
                 key={l.label}
                 to={l.to}
-                hash={l.hash}
+                {...(l.hash ? { hash: l.hash } : {})}
                 onClick={() => setOpen(false)}
                 className="border-b border-border/60 py-3.5 text-sm text-muted-foreground last:border-none"
               >
