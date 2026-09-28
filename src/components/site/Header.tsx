@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -32,12 +32,21 @@ export function Header() {
           : "border-b border-transparent",
       )}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
+      <div
+        className={cn(
+          "mx-auto flex max-w-7xl items-center justify-between px-5 py-4 transition-colors duration-500 sm:px-8",
+          light && "text-primary-foreground",
+        )}
+      >
         <Link to="/" className="group flex flex-col leading-none">
           <span className="font-display text-lg tracking-tight">
             {site.craftsmanName}
           </span>
-          <span className="eyebrow mt-1 text-[0.6rem]">{site.tagline}</span>
+          <span
+            className={cn("eyebrow mt-1 text-[0.6rem]", light && "text-primary-foreground/70")}
+          >
+            {site.tagline}
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -46,7 +55,12 @@ export function Header() {
               key={l.label}
               to={l.to}
               {...(l.hash ? { hash: l.hash } : {})}
-              className="relative text-sm text-muted-foreground transition-colors hover:text-foreground after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
+              className={cn(
+                "relative text-sm transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full",
+                light
+                  ? "text-primary-foreground/80 hover:text-primary-foreground"
+                  : "text-muted-foreground hover:text-foreground",
+              )}
             >
               {l.label}
             </Link>
@@ -57,7 +71,12 @@ export function Header() {
           <Link
             to="/"
             hash="contact"
-            className="hidden rounded-sm bg-primary px-5 py-2.5 text-sm text-primary-foreground transition-colors hover:bg-accent md:inline-flex"
+            className={cn(
+              "hidden rounded-sm px-5 py-2.5 text-sm transition-colors md:inline-flex",
+              light
+                ? "border border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10"
+                : "bg-primary text-primary-foreground hover:bg-accent",
+            )}
           >
             Get in Touch
           </Link>
@@ -65,7 +84,12 @@ export function Header() {
             type="button"
             aria-label="Toggle menu"
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex size-10 items-center justify-center rounded-sm border border-border text-foreground md:hidden"
+            className={cn(
+              "inline-flex size-10 items-center justify-center rounded-sm border md:hidden",
+              light
+                ? "border-primary-foreground/40 text-primary-foreground"
+                : "border-border text-foreground",
+            )}
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
