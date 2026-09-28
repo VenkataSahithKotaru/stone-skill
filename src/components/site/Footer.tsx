@@ -24,8 +24,8 @@ export function Footer() {
       </div>
       <div className="mx-auto max-w-7xl px-5 pb-8 sm:px-8">
         <p className="text-xs text-muted-foreground">
-          © {new Date().getFullYear()} {site.craftsmanName}. Residential &
-          commercial tile work.
+          © {new Date().getFullYear()} {site.craftsmanName}. Tile, marble &
+          granite work · Property services.
         </p>
       </div>
     </footer>

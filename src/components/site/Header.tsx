@@ -5,10 +5,11 @@ import { cn } from "@/lib/utils";
 import { site } from "@/data/site";
 
 const links = [
+  { label: "Home", to: "/", hash: undefined },
   { label: "About", to: "/", hash: "about" },
   { label: "Services", to: "/", hash: "services" },
-  { label: "Work", to: "/work", hash: undefined },
-  { label: "Before & After", to: "/", hash: "before-after" },
+  { label: "My Work", to: "/work", hash: undefined },
+  { label: "Real Estate", to: "/", hash: "real-estate" },
   { label: "Contact", to: "/", hash: "contact" },
 ] as const;
 
@@ -53,7 +54,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-6 lg:flex">
           {links.map((l) => (
             <Link
               key={l.label}
@@ -76,7 +77,7 @@ export function Header() {
             to="/"
             hash="contact"
             className={cn(
-              "hidden rounded-sm px-5 py-2.5 text-sm transition-colors md:inline-flex",
+              "hidden rounded-sm px-5 py-2.5 text-sm transition-colors lg:inline-flex",
               light
                 ? "border border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10"
                 : "bg-primary text-primary-foreground hover:bg-accent",
@@ -89,7 +90,7 @@ export function Header() {
             aria-label="Toggle menu"
             onClick={() => setOpen((v) => !v)}
             className={cn(
-              "inline-flex size-10 items-center justify-center rounded-sm border md:hidden",
+              "inline-flex size-10 items-center justify-center rounded-sm border lg:hidden",
               light
                 ? "border-primary-foreground/40 text-primary-foreground"
                 : "border-border text-foreground",
@@ -101,7 +102,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-border bg-background/95 backdrop-blur-md md:hidden">
+        <div className="border-t border-border bg-background/95 backdrop-blur-md lg:hidden">
           <nav className="mx-auto flex max-w-7xl flex-col px-5 py-2">
             {links.map((l) => (
               <Link
