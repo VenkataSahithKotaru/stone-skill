@@ -4,9 +4,9 @@ import { Footer } from "@/components/site/Footer";
 import { Gallery } from "@/components/site/Gallery";
 import { SectionHeading } from "@/components/site/sections";
 
-const title = "Selected Work — Tile Installation Portfolio";
+const title = "My Work — Tile, Marble & Granite Portfolio";
 const description =
-  "Completed tile projects: bathrooms, kitchens, floors, feature walls, marble and stone work. Browse by category and view project details.";
+  "Completed tile, marble and granite projects. Browse by category and view project details.";
 
 export const Route = createFileRoute("/work")({
   head: () => ({
@@ -31,7 +31,7 @@ function WorkPage() {
           <SectionHeading
             eyebrow="Portfolio"
             title="Selected Work"
-            intro="Completed tile installations across bathrooms, kitchens, floors, walls and stone surfaces."
+            intro="Completed tile, marble and granite work. “Sample image” marks placeholders, not his actual work."
           />
           <div className="mt-14">
             <Gallery />

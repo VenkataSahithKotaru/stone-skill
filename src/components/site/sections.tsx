@@ -334,7 +334,7 @@ export function RealEstate() {
                 e.preventDefault();
                 const d = new FormData(e.currentTarget);
                 const body = ["name", "phone", "requirement", "location", "type", "budget", "message"]
-                  .map((k) => `${k[0].toUpperCase() + k.slice(1)}: ${d.get(k) || "-"}`)
+                  .map((k) => `${k.charAt(0).toUpperCase() + k.slice(1)}: ${d.get(k) || "-"}`)
                   .join("\n");
                 window.location.href = `mailto:${site.email}?subject=${encodeURIComponent("Property enquiry")}&body=${encodeURIComponent(body)}`;
               }}
