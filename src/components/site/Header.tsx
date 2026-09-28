@@ -23,6 +23,10 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const light = !scrolled && !open && pathname === "/";
+
+
   return (
     <header
       className={cn(
