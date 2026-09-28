@@ -56,6 +56,22 @@ export function Gallery() {
         ))}
       </div>
 
+      {visible.length === 0 && (
+        <div className="rounded-sm border border-dashed border-border bg-card p-10 text-center text-sm text-muted-foreground">
+          {active === "Real Estate" ? (
+            <>
+              Property work is shown in the{" "}
+              <a href="/#real-estate" className="text-accent underline-offset-4 hover:underline">
+                Real Estate section
+              </a>
+              .
+            </>
+          ) : (
+            "Photos for this category will be added soon."
+          )}
+        </div>
+      )}
+
       <div className="columns-1 gap-5 sm:columns-2 lg:columns-3 [&>*]:mb-5">
         {visible.map((p, i) => (
           <Reveal key={p.id} delay={i * 70}>
@@ -71,6 +87,7 @@ export function Gallery() {
                   loading="lazy"
                   className="w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105"
                 />
+                {p.isSample && <SampleBadge />}
                 <div className="pointer-events-none absolute inset-0 bg-primary/0 transition-colors duration-500 group-hover:bg-primary/10" />
               </div>
               <div className="p-5">
@@ -125,11 +142,30 @@ export function Gallery() {
             className="max-h-[88vh] w-full max-w-5xl overflow-auto rounded-sm bg-card"
             onClick={(e) => e.stopPropagation()}
           >
-            <img
-              src={current.image}
-              alt={current.title}
-              className="max-h-[62vh] w-full object-contain bg-secondary"
-            />
+            {current.before ? (
+              <div className="grid gap-1 bg-secondary sm:grid-cols-2">
+                {[
+                  ["Before", current.before],
+                  ["After", current.image],
+                ].map(([label, src]) => (
+                  <figure key={label} className="relative">
+                    <img src={src} alt={`${current.title} — ${label}`} className="max-h-[62vh] w-full object-cover" />
+                    <figcaption className="absolute left-3 top-3 rounded-sm bg-primary/85 px-3 py-1 text-[0.65rem] tracking-[0.2em] text-primary-foreground uppercase">
+                      {label}
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            ) : (
+              <div className="relative">
+                <img
+                  src={current.image}
+                  alt={current.title}
+                  className="max-h-[62vh] w-full object-contain bg-secondary"
+                />
+                {current.isSample && <SampleBadge />}
+              </div>
+            )}
             <div className="p-6 sm:p-8">
               <span className="eyebrow">{current.category}</span>
               <h3 className="mt-2 text-2xl">{current.title}</h3>
@@ -153,5 +189,13 @@ export function Gallery() {
         </div>
       )}
     </div>
+  );
+}
+
+export function SampleBadge() {
+  return (
+    <span className="absolute right-3 top-3 rounded-sm bg-background/90 px-2.5 py-1 text-[0.6rem] tracking-[0.16em] text-muted-foreground uppercase">
+      Sample image
+    </span>
   );
 }

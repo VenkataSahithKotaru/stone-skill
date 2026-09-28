@@ -17,11 +17,14 @@ import projectWall from "@/assets/project-wall.jpg";
 import projectCustom from "@/assets/project-custom.jpg";
 import beforeBathroom from "@/assets/before-bathroom.jpg";
 import afterBathroom from "@/assets/after-bathroom.jpg";
+import stockGranite from "@/assets/stock-granite.jpg";
+import stockProperty from "@/assets/stock-property.jpg";
 
 /** Basic details shown in the header, contact section and footer. */
 export const site = {
   craftsmanName: "[Father's Name]", // replace with his name
-  tagline: "Tile Installation & Finishing",
+  tagline: "Tiles • Marble • Granite • Real Estate",
+  yearsOfExperience: "[Years of Experience]", // e.g. "25+"
   phone: "[Phone number]",
   email: "[Email address]",
   serviceArea: "[Service area / city]",
@@ -29,20 +32,18 @@ export const site = {
 };
 
 export type ProjectCategory =
-  | "Bathrooms"
-  | "Kitchens"
-  | "Floors"
-  | "Walls"
-  | "Marble & Stone"
-  | "Other";
+  | "Tiles"
+  | "Marble"
+  | "Granite"
+  | "Interior / Finishing"
+  | "Real Estate";
 
 export const categories: ProjectCategory[] = [
-  "Bathrooms",
-  "Kitchens",
-  "Floors",
-  "Walls",
-  "Marble & Stone",
-  "Other",
+  "Tiles",
+  "Marble",
+  "Granite",
+  "Interior / Finishing",
+  "Real Estate",
 ];
 
 export type Project = {
@@ -53,6 +54,13 @@ export type Project = {
   location?: string;
   date?: string;
   image: string;
+  /** Optional before photo of the same space (image = after). */
+  before?: string;
+  /**
+   * true = decorative/sample image, NOT his actual work.
+   * Set to false (or remove) once you replace the photo with a real one.
+   */
+  isSample?: boolean;
 };
 
 /** Placeholder projects — replace images and text with real work. */
@@ -60,64 +68,139 @@ export const projects: Project[] = [
   {
     id: "modern-bathroom",
     title: "Modern Bathroom",
-    category: "Bathrooms",
+    category: "Tiles",
     description:
       "Wall and floor tiling with careful layout planning around the shower area, niches and corners.",
     location: "[Location]",
     date: "[Date]",
+    isSample: true,
     image: projectBathroom,
   },
   {
     id: "marble-floor",
     title: "Marble Floor",
-    category: "Marble & Stone",
+    category: "Marble",
     description:
       "Large marble slabs set level with tight seams and a polished, continuous finish.",
     location: "[Location]",
     date: "[Date]",
+    isSample: true,
     image: projectMarbleFloor,
   },
   {
     id: "kitchen-backsplash",
     title: "Kitchen Backsplash",
-    category: "Kitchens",
+    category: "Tiles",
     description:
       "Handmade ceramic backsplash with even spacing and clean cuts around fittings and outlets.",
     location: "[Location]",
     date: "[Date]",
+    isSample: true,
     image: projectBacksplash,
   },
   {
     id: "residential-floor",
     title: "Residential Floor",
-    category: "Floors",
+    category: "Tiles",
     description:
       "Large-format floor tiles laid across an open living space with consistent grout lines.",
     location: "[Location]",
     date: "[Date]",
+    isSample: true,
     image: projectFloor,
   },
   {
     id: "feature-wall",
     title: "Feature Wall",
-    category: "Walls",
+    category: "Interior / Finishing",
     description:
       "Textured wall tiles arranged so the pattern stays aligned from floor to ceiling.",
     location: "[Location]",
     date: "[Date]",
+    isSample: true,
     image: projectWall,
   },
   {
     id: "custom-tile-work",
     title: "Custom Tile Work",
-    category: "Other",
+    category: "Interior / Finishing",
     description:
       "Decorative inlay detailing with hand-cut pieces and precise pattern matching.",
     location: "[Location]",
     date: "[Date]",
+    isSample: true,
     image: projectCustom,
   },
+  {
+    id: "granite-countertop",
+    title: "Granite Countertop",
+    category: "Granite",
+    description:
+      "Granite slab fitted on a kitchen counter with clean edges and tight joints.",
+    location: "[Location]",
+    date: "[Date]",
+    isSample: true,
+    image: stockGranite,
+  },
 ];
+
+/* ───────────── Real estate ───────────── */
+
+/**
+ * Real estate services — edit these lines to match exactly what he offers.
+ * No licenses or credentials are claimed here.
+ */
+export const realEstateServices: string[] = [
+  "Property buying assistance",
+  "Property selling assistance",
+  "Property-related guidance",
+  "Residential properties",
+  "Land / plots",
+  "Property connections",
+  "[Add specific real estate services here]",
+];
+
+export type Property = {
+  id: string;
+  title: string;
+  type: string; // e.g. "House", "Plot", "Apartment"
+  location: string;
+  description: string;
+  image?: string;
+  isSample?: boolean;
+};
+
+/**
+ * Property cards. These are PLACEHOLDERS — not real listings.
+ * Replace with real properties (or leave the list empty to hide the cards).
+ */
+export const properties: Property[] = [
+  {
+    id: "property-1",
+    title: "[Property title]",
+    type: "[Property type]",
+    location: "[Location]",
+    description: "Property details will appear here once available.",
+    image: stockProperty,
+    isSample: true,
+  },
+  {
+    id: "property-2",
+    title: "[Property title]",
+    type: "[Property type]",
+    location: "[Location]",
+    description: "Property details will appear here once available.",
+  },
+  {
+    id: "property-3",
+    title: "[Property title]",
+    type: "[Property type]",
+    location: "[Location]",
+    description: "Property details will appear here once available.",
+  },
+];
+
+export const images = { stockGranite, stockProperty };
 
 export type BeforeAfter = {
   id: string;
