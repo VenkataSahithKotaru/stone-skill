@@ -4,6 +4,8 @@ import { Footer } from "@/components/site/Footer";
 import { Gallery } from "@/components/site/Gallery";
 import {
   Hero,
+  ServiceHighlights,
+  RealEstate,
   About,
   Services,
   WhyChoose,
@@ -13,9 +15,9 @@ import {
   SectionHeading,
 } from "@/components/site/sections";
 
-const title = "Quality Tile Work, Built to Last | Tile Installation Craftsman";
+const title = "Tiles, Marble, Granite & Real Estate | Craftsmanship & Property Services";
 const description =
-  "Portfolio of a skilled tile installer: bathrooms, kitchens, floors, walls, marble and stone. Precise installation and clean finishing for homes and businesses.";
+  "One trusted professional for tile, marble and granite installation, plus real estate and property assistance. See completed work and get in touch.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -37,6 +39,7 @@ function Index() {
       <Header />
       <main>
         <Hero />
+        <ServiceHighlights />
         <About />
         <Services />
 
@@ -45,7 +48,7 @@ function Index() {
             <SectionHeading
               eyebrow="Portfolio"
               title="Selected Work"
-              intro="A selection of completed tile installations. Filter by the type of space."
+              intro="Completed tile, marble and granite work. Images marked “Sample image” are placeholders, not his actual work."
             />
             <div className="mt-14">
               <Gallery />
@@ -63,6 +66,7 @@ function Index() {
 
         <WhyChoose />
         <BeforeAfterSection />
+        <RealEstate />
         <Testimonials />
         <Contact />
       </main>
